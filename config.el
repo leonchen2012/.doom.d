@@ -120,7 +120,7 @@
   ;; ...
   )
 
-(use-package org-roam
+(use-package! org-roam
   :ensure t
   :init
   (setq org-roam-v2-ack t)
@@ -137,12 +137,7 @@
   (org-roam-db-autosync-mode))
 
 (use-package! vulpea
-  :after org-roam
-  :config
-;;  (load! "roam-agenda") ;; a separate file containing the gist in my private doom directory
-
-  ;; prevent headings from clogging tag
-  (add-to-list 'org-tags-exclude-from-inheritance "project"))
+  :hook ((org-roam-db-autosync-mode . vulpea-db-autosync-enable)))
 
 (setq projectile-sort-order 'recently-active
       projectile-switch-project-action #'projectile-dired)
